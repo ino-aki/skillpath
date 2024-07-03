@@ -118,6 +118,12 @@ a {
   cursor: pointer;
 }
 
+.field textarea {
+  width: 50%;
+  height: 60px; /* 適宜調整してください */
+  padding: 8px;
+}
+
 /* メイン */
 
 .greeting{
@@ -266,8 +272,38 @@ a {
   justify-content: space-between;
   align-items: center;
 }
-/* フッター */
 
+/* 新規登録の必須表示 */
+.required {
+  color: red;
+  margin-left: 5px;
+}
+
+.actions .form__btn {
+  margin-top: 20px;
+}
+
+/* 新規登録のエラー表示 */
+.error-messages {
+  color: red;
+  margin-bottom: 20px;
+}
+
+.error-messages h3 {
+  margin: 0 0 10px 0;
+}
+
+.error-messages ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.error-messages li {
+  margin-bottom: 5px;
+}
+
+/* フッター */
 .footer {
   background-color: #999;
   padding: 10px 0;
