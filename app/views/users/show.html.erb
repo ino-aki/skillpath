@@ -1,0 +1,33 @@
+<div class="main">
+  <div class="inner">
+    <div class="profile__wrapper">
+      <h2 class="page-heading">マイページ</h2>
+
+      <div class="profile__info">
+        <div class="field">
+          <label class="label-text">ニックネーム</label>
+          <p class="profile__text"><%= @user.nickname %></p>
+        </div>
+
+        <% if current_user == @user %> <!-- ログインユーザーと表示対象のユーザーが同じか確認 -->
+          <div class="field">
+            <label class="label-text">メールアドレス</label>
+            <p class="profile__text"><%= @user.email %></p>
+          </div>
+        <% end %>
+
+        <div class="field">
+          <label class="label-text optional">資格</label>
+          <p class="profile__text"><%= @user.profile.present? ? @user.profile : "取得した資格が設定されていません。" %></p>
+        </div>
+
+        <% if current_user == @user %> <!-- ログインユーザーと表示対象のユーザーが同じか確認 -->
+          <div class="actions">
+            <%= link_to '編集', edit_user_path(@user), class: 'profile__btn' %>
+          </div>
+        <% end %>
+        
+      </div>
+    </div>
+  </div>
+</div>
