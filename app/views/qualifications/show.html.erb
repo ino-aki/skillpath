@@ -37,6 +37,32 @@
         </div>
       </div>
 
+      <!-- コメントセクション -->
+      <div class="comments-section">
+        <h3>コメント</h3>
+        <% @comments.each do |comment| %>
+          <div class="comment">
+            <% if comment.user.present? %>
+              <p><strong><%= comment.user.nickname %>:</strong> <%= comment.content %></p>
+            <% else %>
+              <p><strong>Unknown User:</strong> <%= comment.content %></p>
+            <% end %>
+            <p class="timestamp"><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+          </div>
+        <% end %>
+
+
+        <% if user_signed_in? %>
+          <!-- コメント入力フォーム -->
+          <%= form_with(model: [ @qualification, @comment ], url: qualification_comments_path(@qualification)) do |form| %>
+            <%= form.text_area :content, placeholder: 'コメントを入力してください', required: true %>
+            <%= form.submit 'コメントを投稿する' %>
+          <% end %>
+        <% else %>
+          <p>コメントをするには<a href="<%= new_user_session_path %>">ログイン</a>してください。</p>
+        <% end %>
+      </div>
+
       <%= link_to '一覧に戻る', qualifications_path, class: 'back-btn' %>
     </div>
   </div>

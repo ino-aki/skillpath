@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_06_111509) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_07_122615) do
+  create_table "comments", charset: "utf8", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "qualification_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["qualification_id"], name: "index_comments_on_qualification_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "qualifications", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "official_url", null: false
@@ -36,4 +46,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_06_111509) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "qualifications"
+  add_foreign_key "comments", "users"
 end
