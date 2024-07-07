@@ -7,10 +7,11 @@
       </div>
       <div class="qualifications-list">
         <% @qualifications.each do |qualification| %>
-          <div class="qualification">
-            <h3><%= qualification.name %></h3>
-            <p><%= link_to '詳細を見る', qualification.official_url, target: '_blank' %></p>
-          </div>
+          <%= link_to qualification_path(qualification) do %>
+            <div class="qualification">
+              <h3><%= qualification.name %></h3>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>

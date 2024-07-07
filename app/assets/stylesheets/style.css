@@ -80,6 +80,7 @@ a {
   background-color: #f4f4f4;
 }
 
+/* 資格一覧のスタイル */
 .qualifications {
   width: 100%;
   padding: 20px 0 20px 15px;
@@ -131,24 +132,108 @@ a {
   margin-top: 5px;
 }
 
-/* フッター */
-.footer {
+/* 資格情報の詳細ページ */
+.qualification-detail {
+  width: 100%;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin: 20px auto 0;
+}
+
+.qualification-header {
   background-color: #e0e0e0; /* 背景を薄いグレーに設定 */
-  padding: 15px 0; /* パディングを1.5倍に拡大 */
-  margin-top: auto;
-  border-top: 2px solid #ccc;
-}
-
-.footer .inner {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.copyright {
-  text-align: center;
   color: #3b4043; /* 文字色を黒に設定 */
-  font-size: 12px;
+  padding: 20px;
+  border-radius: 12px 12px 0 0;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  background-color: #3b4043;
+  color: #ffffff;
+  padding: 15px 30px; /* タブのパディングを大きく */
+  border: none;
+  border-radius: 4px;
+  margin: 0 10px; /* マージンを調整 */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 150px; /* 最小幅を設定 */
+  text-align: center; /* テキストを中央揃え */
+}
+
+.tab-button.active {
+  background-color: #555; /* アクティブ時の背景色を変更 */
+  color: #ffffff; /* アクティブ時のテキスト色を変更 */
+  border-bottom: 2px solid #ffffff; /* 下線を追加 */
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5); /* アクティブ時のボーダーを追加 */
+}
+
+.tab-content {
+  display: none;
+  padding: 20px;
+  margin: 0 auto; /* タブコンテンツを中央揃え */
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.qualification-label {
+  font-size: 18px;
+  color: #3b4043;
+  margin-bottom: 10px;
+}
+
+.qualification-info {
+  font-size: 16px;
+  color: #3b4043;
+  margin-bottom: 20px;
+}
+
+.link-hover {
+  color: #3b4043;
+  text-decoration: none;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.link-hover:hover {
+  color: #555;
+  border-bottom: 1px solid #555;
+}
+
+.back-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3b4043;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.back-btn:hover {
+  background-color: #555;
+}
+
+/* 仕切りのスタイル */
+.qualification-divider {
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+  margin: 20px 0;
 }
 
 /* フォーム */

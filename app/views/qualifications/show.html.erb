@@ -1,0 +1,43 @@
+<main class="main">
+  <div class="inner">
+    <div class="qualification-detail">
+      <div class="qualification-header">
+        <h2><%= @qualification.name %></h2>
+      </div>
+      
+      <div class="tabs">
+        <button class="tab-button active" data-tab="basic-info">基本情報</button>
+        <button class="tab-button" data-tab="extra-info">詳細情報</button>
+      </div>
+      
+      <div class="tab-content active" id="basic-info">
+        <div class="qualification-content">
+          <hr class="qualification-divider"> <!-- 仕切り線 -->
+          <p class="qualification-label">公式URL:</p>
+          <p class="qualification-info"><%= link_to @qualification.official_url, @qualification.official_url, target: '_blank', class: 'link-hover' %></p>
+          
+          <hr class="qualification-divider"> <!-- 仕切り線 -->
+          <p class="qualification-label">受験情報URL:</p>
+          <p class="qualification-info"><%= link_to @qualification.exam_info_url, @qualification.exam_info_url, target: '_blank', class: 'link-hover' %></p>
+          
+          <hr class="qualification-divider"> <!-- 仕切り線 -->
+          <p class="qualification-label">受験料:</p>
+          <p class="qualification-info"><%= @qualification.exam_fee %></p>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="extra-info">
+        <div class="qualification-extra">
+          <hr class="qualification-divider"> <!-- 仕切り線 -->
+          <p class="qualification-label">学習目安時間:</p>
+          <p class="qualification-info">
+            <%= @qualification.study_hours %>時間
+            (<%= link_to '情報元', @qualification.source_url, target: '_blank', class: 'link-hover' %>)
+          </p>
+        </div>
+      </div>
+
+      <%= link_to '一覧に戻る', qualifications_path, class: 'back-btn' %>
+    </div>
+  </div>
+</main>
