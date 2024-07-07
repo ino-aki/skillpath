@@ -11,19 +11,21 @@
 
 ### Association
 
-- has_many :qualifications
 - has_many :comments
 
 ## qualifications テーブル
 
-| Column       | Type       | Options     |
-| ------------ | ---------- | ----------- |
-| name         | string     | null: false |
-| official_url | text       | null: false |
+| Column        | Type      | Options     |
+| ------------- | --------- | ----------- |
+| name          | string    | null: false |
+| official_url  | text      | null: false |
+| exam_info_url | text      | null: false |
+| exam_fee      | string    | null: false |
+| study_hours   | integer   | null: false |
+| source_url    | string    | null: false |
 
 ### Association
 
-- belongs_to :user
 - has_many :comments
 
 ## comments テーブル

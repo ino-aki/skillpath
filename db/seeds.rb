@@ -1,24 +1,14 @@
-# 資格情報のデータを作成
-qualifications = [
-  { name: 'ITパスポート試験', official_url: 'https://www.ipa.go.jp/' },
-  { name: '基本情報技術者試験', official_url: 'https://www.ipa.go.jp/' },
-  { name: '情報セキュリティマネジメント試験', official_url: 'https://www.ipa.go.jp/' },
-  { name: 'ウェブデザイン技能検定', official_url: 'https://www.webdesign.gr.jp/' },
-  { name: '応用情報技術者試験', official_url: 'https://www.ipa.go.jp/' },
-  { name: 'プロジェクトマネージャ試験', official_url: 'https://www.ipa.go.jp/' },
-  { name: 'ITストラテジスト試験', official_url: 'https://www.ipa.go.jp/' },
-  { name: 'データベーススペシャリスト試験', official_url: 'https://www.ipa.go.jp/' },
-  { name: 'ITサービスマネージャ試験', official_url: 'https://www.ipa.go.jp/' },
-  { name: '情報処理安全確保支援士試験', official_url: 'https://www.ipa.go.jp/' },
-  { name: 'システム監査技術者試験', official_url: 'https://www.ipa.go.jp/' },
-  { name: 'ネットワークスペシャリスト試験', official_url: 'https://www.ipa.go.jp/' },
-  { name: 'エンべデッドシステムスペシャリスト試験', official_url: 'https://www.ipa.go.jp/' },
-  { name: 'システムアーキテクト試験', official_url: 'https://www.ipa.go.jp/' }
-]
+# 既存のデータを削除
+Qualification.delete_all
 
-# データをデータベースに追加
-qualifications.each do |qualification|
-  Qualification.create!(qualification)
-end
-
-puts '資格情報のシードデータを追加しました。'
+# 新しい初期データを作成
+qualifications = Qualification.create([
+  {
+    name: 'ITパスポート試験 (iパス)',
+    official_url: 'https://www.ipa.go.jp/',
+    exam_info_url: 'https://www.ipa.go.jp/shiken/kubun/ip.html',
+    exam_fee: '7,500円(税込)',
+    study_hours: 180,
+    source_url: 'https://www.tac-school.co.jp/kouza_joho/joho_ip/ip_study_time.html'
+  }
+])
