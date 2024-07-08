@@ -37,6 +37,31 @@
         </div>
       </div>
 
+      <!-- コメントセクション -->
+      <div class="comments-section">
+        <h3>受験者の声・体験談を投稿</h3>
+        <% @comments.each do |comment| %>
+          <div class="comment">
+            <p><strong><%= link_to comment.user.nickname, user_path(comment.user) %>:</strong> <%= comment.content %></p>
+            <p class="timestamp"><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+            <% if comment.user == current_user %>
+              <%= link_to '編集', edit_qualification_comment_path(@qualification, comment) %>
+              <%= link_to "削除", qualification_comment_path(@qualification, comment), data: { turbo_method: :delete }, class: :prototype__btn %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% if user_signed_in? %>
+          <!-- コメント入力フォーム -->
+          <%= form_with(model: [ @qualification, @comment ], url: qualification_comments_path(@qualification)) do |form| %>
+            <%= form.text_area :content, placeholder: 'コメントを入力してください', required: true %>
+            <%= form.submit 'コメントを投稿する' %>
+          <% end %>
+        <% else %>
+          <p>コメントをするには<a href="<%= new_user_session_path %>">ログイン</a>してください。</p>
+        <% end %>
+      </div>
+
       <%= link_to '一覧に戻る', qualifications_path, class: 'back-btn' %>
     </div>
   </div>

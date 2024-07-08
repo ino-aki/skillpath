@@ -236,6 +236,62 @@ a {
   margin: 20px 0;
 }
 
+/* コメント機能のスタイル */
+.comments-section {
+  margin-top: 30px;
+}
+
+.comment {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+
+.comment p {
+  margin: 5px 0;
+}
+
+.comment .timestamp {
+  font-size: 12px;
+  color: #999;
+}
+
+.comment strong a {
+  text-decoration: none; /* リンクの下線を消す */
+  color: #3b4043; /* リンクの色をブルーに設定 */
+  transition: underline 0.2s ease; /* アンダーバーの表示を滑らかにする */
+}
+
+.comment strong a:hover {
+  text-decoration: underline; /* カーソルを合わせるとアンダーバー表示 */
+}
+
+.comments-section form {
+  margin-top: 20px;
+}
+
+.comments-section form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.comments-section form input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.comments-section form input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
 /* フォーム */
 .form__wrapper {
   background-color: #ffffff;
@@ -388,6 +444,79 @@ a {
 
 .profile__btn:hover {
   background-color: #555;
+}
+
+/* コメント編集ページ */
+.comment-form__field {
+  margin-bottom: 20px;
+}
+
+.comment-form__label {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.comment-form__textarea {
+  font-size: 18px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  width: 100%;
+  min-height: 150px;
+}
+
+.comment-form__actions {
+  margin-top: 20px;
+}
+
+.comment-form__submit {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  background-color: #3b4043;
+  color: #ffffff;
+}
+
+.comment-form__submit:hover {
+  background-color: #555;
+}
+
+.comment-form__back-link {
+  background-color: #ccc;
+  color: #000;
+}
+
+.comment-form__back-link:hover {
+  background-color: #999;
+}
+
+
+/* フッター */
+.footer {
+  background-color: #e0e0e0; /* 背景を薄いグレーに設定 */
+  padding: 15px 0; /* パディングを1.5倍に拡大 */
+  border-top: 2px solid #ccc; /* 上部にボーダーを追加 */
+  width: 100%;
+  text-align: center; /* 中央寄せに設定 */
+}
+
+/* インナーコンテンツのスタイル */
+.footer .inner {
+  width: 90%; /* 幅を90%に設定 */
+  max-width: 1200px; /* 最大幅を1200pxに制限 */
+  margin: 0 auto; /* 中央寄せ */
+}
+
+/* 著作権表示のスタイル */
+.footer .copyright {
+  font-size: 16px; /* フォントサイズを少し大きめに設定 */
+  color: #3b4043; /* 文字色を黒に設定 */
 }
 
 /* タブレット用スタイル */

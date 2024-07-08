@@ -5,5 +5,7 @@ class QualificationsController < ApplicationController
   
   def show
     @qualification = Qualification.find(params[:id])
+    @comments = @qualification.comments.order(created_at: :desc) # ここで降順に並び替える
+    @comment = Comment.new
   end
 end
