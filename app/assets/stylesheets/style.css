@@ -236,6 +236,76 @@ a {
   margin: 20px 0;
 }
 
+/* 学習計画タブのコンテンツ */
+#study-plan {
+  padding: 20px;
+}
+
+.qualification-study-plan {
+  background-color: #f0f0f0; /* 薄いグレーの背景色 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* フォームのスタイル */
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.form-label {
+  flex: 3.5; /* ラベルの幅を3に設定 */
+  font-size: 18px;
+  color: #3b4043;
+  margin-right: 10px;
+  text-align: right; /* ラベルを右寄せに設定 */
+  white-space: nowrap; /* 改行を禁止 */
+}
+
+.form-control {
+  flex: 6.5; /* 入力フィールドの幅を7に設定 */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: left; /* 入力フィールドを左寄せに設定 */
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #555;
+}
+
+.btn-submit {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px; /* ボタンの上部に余白を追加 */
+}
+
+.btn-submit:hover {
+  background-color: #0056b3;
+}
+
+.form-label:after {
+  content: ":";
+}
+
+/* 結果表示コンテナ */
+#study-plan-result {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #3b4043;
+}
+
 /* コメント機能のスタイル */
 .comments-section {
   margin-top: 30px;

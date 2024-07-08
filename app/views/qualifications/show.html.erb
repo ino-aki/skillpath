@@ -8,6 +8,8 @@
       <div class="tabs">
         <button class="tab-button active" data-tab="basic-info">基本情報</button>
         <button class="tab-button" data-tab="extra-info">詳細情報</button>
+        <!-- 学習計画タブを追加 -->
+        <button class="tab-button" data-tab="study-plan">学習計画</button>
       </div>
       
       <div class="tab-content active" id="basic-info">
@@ -34,6 +36,49 @@
             <%= @qualification.study_hours %>時間
             (<%= link_to '情報元', @qualification.source_url, target: '_blank', class: 'link-hover' %>)
           </p>
+        </div>
+      </div>
+
+      <!-- 学習計画タブのコンテンツ -->
+      <div class="tab-content" id="study-plan">
+        <div class="qualification-study-plan">
+          <%= form_with(url: calculate_study_time_study_plans_path, method: :post, id: 'study-plan-form') do |form| %>
+            <div class="form-group">
+              <%= form.label :start_date, '開始日 ', class: 'form-label' %>
+              <%= form.text_field :start_date, class: 'form-control', value: Date.today.strftime('%Y%m%d'), required: true %>
+            </div>
+            <div class="form-group">
+              <%= form.label :test_date, 'テスト日 ', class: 'form-label' %>
+              <%= form.text_field :test_date, class: 'form-control', value: (Date.today + 3.months).strftime('%Y%m%d'), required: true %>
+            </div>
+            <div class="form-group">
+              <%= form.label :holiday_days, '祝日有給日数 ', class: 'form-label' %>
+              <%= form.number_field :holiday_days, class: 'form-control', value: 0, required: true %>
+            </div>
+            <div class="form-group">
+              <%= form.label :study_hours_weekday, '平日の1日あたり勉強時間（時間）', class: 'form-label' %>
+              <%= form.number_field :study_hours_weekday, class: 'form-control', value: 2, required: true %>
+            </div>
+            <div class="form-group">
+              <%= form.label :study_hours_saturday, '土曜日の1日あたり勉強時間（時間）', class: 'form-label' %>
+              <%= form.number_field :study_hours_saturday, class: 'form-control', value: 0, required: true %>
+            </div>
+            <div class="form-group">
+              <%= form.label :study_hours_sunday, '日曜日の1日あたり勉強時間（時間）', class: 'form-label' %>
+              <%= form.number_field :study_hours_sunday, class: 'form-control', value: 0, required: true %>
+            </div>
+            <div class="form-group">
+              <%= form.label :study_hours_holiday, '祝日有給日の1日あたり勉強時間（時間）', class: 'form-label' %>
+              <%= form.number_field :study_hours_holiday, class: 'form-control', value: 0, required: true %>
+            </div>
+            <div class="form-group">
+              <%= form.label :study_goal_hours, '学習目安時間（時間）', class: 'form-label' %>
+              <%= form.number_field :study_goal_hours, class: 'form-control', value: @qualification.study_hours, required: true %>
+            </div>
+            <%= form.submit '学習計画を計算する', class: 'btn-submit' %>
+          <% end %>
+          <div id="study-plan-result"></div>
+          <div id="study-plan-feedback"></div>
         </div>
       </div>
 
