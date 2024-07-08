@@ -14,7 +14,7 @@ class StudyPlansController < ApplicationController
     total_study_hours = 0
     current_date = start_date
 
-    while current_date <= test_date
+    while current_date < test_date
       if current_date.wday.between?(1, 5) # 月曜日から金曜日
         total_study_hours += study_hours_weekday
       elsif current_date.wday == 6 # 土曜日
