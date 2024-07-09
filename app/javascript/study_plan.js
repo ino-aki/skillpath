@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('turbo:load', () => {
   const form = document.querySelector("#study-plan-form");
 
   form.addEventListener("submit", async (event) => {
