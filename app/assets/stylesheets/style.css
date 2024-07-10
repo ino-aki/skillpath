@@ -99,10 +99,9 @@ a {
 }
 
 .qualifications-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2列にする */
   gap: 20px; /* 要素間の隙間を設定 */
-  justify-content: flex-start; /* 左寄せ */
 }
 
 .qualification {
@@ -112,8 +111,6 @@ a {
   padding: 20px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   text-align: center; /* 中央揃え */
-  white-space: nowrap; /* 改行せずに表示 */
-  display: inline-block; /* インラインブロックに設定 */
 }
 
 .qualification:hover {
@@ -131,6 +128,7 @@ a {
   color: #666666; /* 文字色を灰色に設定 */
   margin-top: 5px;
 }
+
 
 /* 資格情報の詳細ページ */
 .qualification-detail {

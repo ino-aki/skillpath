@@ -1,6 +1,5 @@
 <main class="main">
   <div class="inner">
-  
     <div class="qualifications">
       <div class="qualifications-header">
         <h2>資格情報一覧</h2>
@@ -10,6 +9,7 @@
           <%= link_to qualification_path(qualification) do %>
             <div class="qualification">
               <h3><%= qualification.name %></h3>
+              <p><%= qualification.description %></p>
             </div>
           <% end %>
         <% end %>
