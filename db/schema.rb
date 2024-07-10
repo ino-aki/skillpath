@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_07_122615) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_10_111038) do
   create_table "comments", charset: "utf8", force: :cascade do |t|
     t.text "content", null: false
     t.bigint "qualification_id", null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_07_122615) do
     t.string "exam_fee", null: false
     t.integer "study_hours", null: false
     t.string "source_url", null: false
+    t.text "description", null: false
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|

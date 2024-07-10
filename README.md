@@ -23,6 +23,7 @@
 | exam_fee      | string    | null: false |
 | study_hours   | integer   | null: false |
 | source_url    | string    | null: false |
+| description   | text      | null: false |
 
 ### Association
 
