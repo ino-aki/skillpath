@@ -80,7 +80,7 @@
           <div id="study-plan-result"></div>
           <div id="study-plan-feedback"></div>
             <p class="study-plan-disclaimer">
-              ※ こちらの計算結果は目安の学習時間を算出するものであり、実際の受験準備においては個別の状況に応じた適切な計画調整が必要です。ご注意ください。
+              <br>※ こちらの計算結果は目安の学習時間を算出するものであり、実際の受験準備においては個別の状況に応じた適切な計画調整が必要です。ご注意ください。
             </p>
         </div>
       </div>
@@ -108,6 +108,10 @@
         <% else %>
           <p>コメントをするには<a href="<%= new_user_session_path %>">ログイン</a>してください。</p>
         <% end %>
+      </div>
+
+      <div class="disclaimer">
+        <p>※ 情報が古い場合があるので受験する場合は公式サイトを参照してください。</p>
       </div>
 
       <%= link_to '一覧に戻る', qualifications_path, class: 'back-btn' %>
