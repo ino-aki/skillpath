@@ -91,7 +91,7 @@ https://skillpath-am1o.onrender.com
 - 資格情報の検索・フィルター機能
 
 ## データベース設計
-[![ER図](https://i.gyazo.com/0503f1f2b386ffc1a1b0d85c0562eb8d.png)](https://gyazo.com/0503f1f2b386ffc1a1b0d85c0562eb8d)
+[![ER図](https://i.gyazo.com/71575be242c27d7d5f7ffe633267c5f6.png)](https://gyazo.com/71575be242c27d7d5f7ffe633267c5f6)
 
 ## 画面遷移図
 [![画面遷移図](https://i.gyazo.com/0e4cb69e8b12f036839aea2d48e55d61.png)](https://gyazo.com/0e4cb69e8b12f036839aea2d48e55d61)
