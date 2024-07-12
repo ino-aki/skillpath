@@ -79,3 +79,6 @@ group :production do
 end
 
 gem 'devise'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
+gem 'omniauth', '~>2.1.1'
