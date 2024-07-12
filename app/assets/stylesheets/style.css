@@ -25,8 +25,8 @@ a {
 
 /* ヘッダー */
 .header {
-  background-color: #e0e0e0; /* 背景を薄いグレーに設定 */
-  padding: 15px 0; /* パディングを1.5倍に拡大 */
+  background-color: #e0e0e0; 
+  padding: 15px 0;
   border-bottom: 2px solid #ccc;
   position: fixed;
   top: 0;
@@ -47,7 +47,7 @@ a {
 }
 
 .logo {
-  width: 225px; /* ロゴの幅を1.5倍に拡大 */
+  width: 225px;
 }
 
 .nav__right {
@@ -57,39 +57,39 @@ a {
 
 .nav__btn {
   display: inline-block;
-  padding: 12px 24px; /* パディングを1.5倍に拡大 */
-  font-size: 21px; /* フォントサイズを1.5倍に拡大 */
-  color: #3b4043; /* 文字色を黒に設定 */
+  padding: 12px 24px;
+  font-size: 21px;
+  color: #3b4043;
   text-decoration: none;
   user-select: none;
-  background-color: #f0f0f0; /* 背景色を淡いグレーに設定 */
-  border: none; /* ボタンの枠を削除 */
-  border-radius: 20px; /* 丸みを持たせる */
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 20px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav__btn:hover {
-  background-color: #d0d0d0; /* カーソルをかざしたときのハイライト効果 */
+  background-color: #d0d0d0;
 }
 
 /* メインコンテンツ */
 .main {
   flex: 1;
-  padding-top: 90px; /* ヘッダーの高さに合わせてパディングを増加 */
+  padding-top: 90px;
   padding-bottom: 40px;
   background-color: #f4f4f4;
 }
 
-/* 資格一覧のスタイル */
+/* 資格一覧表示 */
 .qualifications {
   width: 100%;
-  padding: 20px 0 20px 15px;
+  padding: 20px 0;
   box-sizing: border-box;
 }
 
 .qualifications-header {
-  background-color: #e0e0e0; /* 背景を薄いグレーに設定 */
-  color: #3b4043; /* 文字色を黒に設定 */
+  background-color: #e0e0e0;
+  color: #3b4043;
   padding: 10px 20px;
   border-radius: 20px;
   margin-bottom: 20px;
@@ -100,32 +100,33 @@ a {
 
 .qualifications-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2列にする */
-  gap: 20px; /* 要素間の隙間を設定 */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .qualification {
-  background: linear-gradient(145deg, #ffffff, #f0f0f0); /* グラデーション背景 */
-  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1), -8px -8px 16px rgba(255, 255, 255, 0.5); /* 立体感のある影 */
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1), -8px -8px 16px rgba(255, 255, 255, 0.5);
   border-radius: 12px;
   padding: 20px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  text-align: center; /* 中央揃え */
+  text-align: center;
+  min-height: 150px;
 }
 
 .qualification:hover {
   transform: translateY(-5px);
-  box-shadow: 12px 12px 24px rgba(0, 0, 0, 0.2), -12px -12px 24px rgba(255, 255, 255, 0.7); /* ホバー時の影の効果 */
+  box-shadow: 12px 12px 24px rgba(0, 0, 0, 0.2), -12px -12px 24px rgba(255, 255, 255, 0.7);
 }
 
 .qualification h3 {
-  color: #3b4043; /* 文字色を黒に設定 */
+  color: #3b4043;
   font-size: 18px;
   margin-bottom: 10px;
 }
 
 .qualification p {
-  color: #666666; /* 文字色を灰色に設定 */
+  color: #666666;
   margin-top: 5px;
 }
 
@@ -141,8 +142,8 @@ a {
 }
 
 .qualification-header {
-  background-color: #e0e0e0; /* 背景を薄いグレーに設定 */
-  color: #3b4043; /* 文字色を黒に設定 */
+  background-color: #e0e0e0;
+  color: #3b4043;
   padding: 20px;
   border-radius: 12px 12px 0 0;
   text-align: center;
@@ -154,32 +155,33 @@ a {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  flex-wrap: wrap; /* タブを折り返し可能にする */
 }
 
 .tab-button {
   background-color: #3b4043;
   color: #ffffff;
-  padding: 15px 30px; /* タブのパディングを大きく */
+  padding: 10px 20px;
   border: none;
   border-radius: 4px;
-  margin: 0 10px; /* マージンを調整 */
+  margin: 5px; /* 各タブに余白を追加 */
   cursor: pointer;
   transition: background-color 0.3s ease;
-  min-width: 150px; /* 最小幅を設定 */
-  text-align: center; /* テキストを中央揃え */
+  flex-grow: 1; /* タブを均等に広げる */
+  text-align: center;
 }
 
 .tab-button.active {
-  background-color: #555; /* アクティブ時の背景色を変更 */
-  color: #ffffff; /* アクティブ時のテキスト色を変更 */
-  border-bottom: 2px solid #ffffff; /* 下線を追加 */
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5); /* アクティブ時のボーダーを追加 */
+  background-color: #555;
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
 }
 
 .tab-content {
   display: none;
   padding: 20px;
-  margin: 0 auto; /* タブコンテンツを中央揃え */
+  margin: 0 auto;
 }
 
 .tab-content.active {
@@ -196,6 +198,7 @@ a {
   font-size: 16px;
   color: #3b4043;
   margin-bottom: 20px;
+  word-wrap: break-word;
 }
 
 .link-hover {
@@ -226,7 +229,6 @@ a {
   background-color: #555;
 }
 
-/* 仕切りのスタイル */
 .qualification-divider {
   border: none;
   height: 1px;
@@ -234,43 +236,36 @@ a {
   margin: 20px 0;
 }
 
-/* 学習計画タブのコンテンツ */
 #study-plan {
   padding: 20px;
 }
 
 .qualification-study-plan {
-  background-color: #f0f0f0; /* 薄いグレーの背景色 */
+  background-color: #f0f0f0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 20px;
 }
 
-/* フォームのスタイル */
 .form-group {
   display: flex;
-  align-items: center;
+  flex-direction: column; /* ラベルと入力フィールドを縦並びに */
   margin-bottom: 20px;
   width: 100%;
 }
 
 .form-label {
-  flex: 3.5; /* ラベルの幅を3に設定 */
   font-size: 18px;
   color: #3b4043;
-  margin-right: 10px;
-  text-align: right; /* ラベルを右寄せに設定 */
-  white-space: nowrap; /* 改行を禁止 */
+  margin-bottom: 10px;
 }
 
 .form-control {
-  flex: 6.5; /* 入力フィールドの幅を7に設定 */
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  text-align: left; /* 入力フィールドを左寄せに設定 */
 }
 
 .form-control:focus {
@@ -286,7 +281,7 @@ a {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 20px; /* ボタンの上部に余白を追加 */
+  margin-top: 20px;
 }
 
 .btn-submit:hover {
@@ -297,14 +292,12 @@ a {
   content: ":";
 }
 
-/* 結果表示コンテナ */
 #study-plan-result {
   margin-top: 20px;
   font-size: 18px;
   color: #3b4043;
 }
 
-/* コメント機能のスタイル */
 .comments-section {
   margin-top: 30px;
 }
@@ -326,13 +319,13 @@ a {
 }
 
 .comment strong a {
-  text-decoration: none; /* リンクの下線を消す */
-  color: #3b4043; /* リンクの色をブルーに設定 */
-  transition: underline 0.2s ease; /* アンダーバーの表示を滑らかにする */
+  text-decoration: none;
+  color: #3b4043;
+  transition: underline 0.2s ease;
 }
 
 .comment strong a:hover {
-  text-decoration: underline; /* カーソルを合わせるとアンダーバー表示 */
+  text-decoration: underline;
 }
 
 .comments-section form {
@@ -358,6 +351,18 @@ a {
 
 .comments-section form input[type="submit"]:hover {
   background-color: #0056b3;
+}
+
+.disclaimer {
+  background-color: #f8f9fa; /* 薄いグレーの背景色 */
+  padding: 15px; /* 内側の余白 */
+  border: 1px solid #ced4da; /* 細い灰色の境界線 */
+  margin-top: 20px; /* 上側の余白 */
+}
+
+.disclaimer p {
+  margin: 0; /* 段落の余白をリセット */
+  color: #495057; /* ダークグレーのテキスト色 */
 }
 
 /* フォーム */
@@ -567,37 +572,213 @@ a {
 
 /* フッター */
 .footer {
-  background-color: #e0e0e0; /* 背景を薄いグレーに設定 */
-  padding: 15px 0; /* パディングを1.5倍に拡大 */
-  border-top: 2px solid #ccc; /* 上部にボーダーを追加 */
+  background-color: #e0e0e0;
+  padding: 15px 0;
+  border-top: 2px solid #ccc;
   width: 100%;
-  text-align: center; /* 中央寄せに設定 */
+  text-align: center;
 }
 
-/* インナーコンテンツのスタイル */
 .footer .inner {
-  width: 90%; /* 幅を90%に設定 */
-  max-width: 1200px; /* 最大幅を1200pxに制限 */
-  margin: 0 auto; /* 中央寄せ */
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* 著作権表示のスタイル */
 .footer .copyright {
-  font-size: 16px; /* フォントサイズを少し大きめに設定 */
-  color: #3b4043; /* 文字色を黒に設定 */
+  font-size: 16px;
+  color: #3b4043;
 }
 
-/* タブレット用スタイル */
-@media (max-width: 1024px) {
-  .inner {
-    width: 90%;
-    margin: 0 auto;
+/* タブレット用のスタイル */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .header {
+    padding: 20px 0;
+  }
+
+  .nav__btn {
+    padding: 14px 28px;
+    font-size: 18px;
+  }
+
+  .qualifications-header {
+    font-size: 20px;
+  }
+
+  .qualifications-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .qualification h3 {
+    font-size: 16px;
+  }
+
+  .tab-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .form-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-label {
+    margin-bottom: 5px;
+    text-align: left;
+  }
+
+  .form-control {
+    width: 100%;
   }
 }
 
-/* スマートフォン用スタイル */
-@media (max-width: 599px) {
+/* 大型スマホと小型タブレット用のスタイル */
+@media (max-width: 768px) {
+  .qualification {
+    min-height: auto; /* スマホでは最小高さを自動に戻す */
+  }
+  .qualifications-list {
+    grid-template-columns: 1fr; /* スマホでは1列表示 */
+  }
+  .header {
+    padding: 10px 0; /* ヘッダーのパディングを調整 */
+  }
   .logo {
-    width: 180px; /* ロゴの幅を1.5倍に拡大 */
+    width: 150px; /* ロゴの幅を調整 */
+  }
+  .nav__btn {
+    font-size: 18px; /* ボタンのフォントサイズを調整 */
+    padding: 10px 20px; /* ボタンのパディングを調整 */
+  }
+  .main {
+    padding-top: 70px; /* メインコンテンツの上部パディングを調整 */
+  }
+
+  .qualification-header {
+    font-size: 20px;
+    padding: 15px;
+  }
+
+  .tab-button {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .form-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-label {
+    margin-bottom: 5px;
+    text-align: left;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+}
+
+/* 一般的なスマホ用のスタイル */
+@media (max-width: 576px) {
+  .qualification {
+    /* 小さなスマホ用のスタイルを追加 */
+    padding: 15px; /* パディングを少し減らす */
+    font-size: 16px; /* フォントサイズを少し小さくする */
+  }
+  .header {
+    padding: 8px 0; /* ヘッダーのパディングをさらに減らす */
+  }
+  .logo {
+    width: 120px; /* ロゴの幅をさらに小さくする */
+  }
+  .nav__btn {
+    font-size: 16px; /* ボタンのフォントサイズをさらに小さくする */
+    padding: 8px 16px; /* ボタンのパディングをさらに減らす */
+  }
+  .main {
+    padding-top: 60px; /* メインコンテンツの上部パディングをさらに減らす */
+  }
+
+  .qualification-header {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .tab-button {
+    padding: 8px 12px;
+    font-size: 12px;
+    margin: 0 5px;
+  }
+
+  .form-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-label {
+    margin-bottom: 5px;
+    text-align: left;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+}
+
+/* 小型スマホ用のスタイル */
+@media (max-width: 375px) {
+  .qualification {
+    /* 小型スマホ用のスタイルを追加 */
+    padding: 10px; /* パディングをさらに減らす */
+    font-size: 14px; /* フォントサイズをさらに小さくする */
+  }
+  .header {
+    padding: 5px 0; /* ヘッダーのパディングを最小限にする */
+  }
+  .logo {
+    width: 100px; /* ロゴの幅を最小にする */
+  }
+  .nav__btn {
+    font-size: 14px; /* ボタンのフォントサイズを最小にする */
+    padding: 5px 10px; /* ボタンのパディングを最小にする */
+  }
+  .main {
+    padding-top: 50px; /* メインコンテンツの上部パディングを最小にする */
+  }
+
+  .qualification-header {
+    font-size: 16px;
+    padding: 5px;
+  }
+
+  .tab-button {
+    padding: 5px 10px;
+    font-size: 10px;
+    margin: 0 3px;
+  }
+
+  .form-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-label {
+    margin-bottom: 5px;
+    text-align: left;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+
+  .footer {
+    padding: 10px 0;
+  }
+
+  .footer .copyright {
+    font-size: 14px;
   }
 }
