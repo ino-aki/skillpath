@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_10_111038) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_12_111726) do
   create_table "comments", charset: "utf8", force: :cascade do |t|
     t.text "content", null: false
     t.bigint "qualification_id", null: false
@@ -33,6 +33,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_10_111038) do
     t.text "description", null: false
   end
 
+  create_table "sns_credentials", charset: "utf8", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.text "profile"
@@ -49,4 +58,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_10_111038) do
 
   add_foreign_key "comments", "qualifications"
   add_foreign_key "comments", "users"
+  add_foreign_key "sns_credentials", "users"
 end
