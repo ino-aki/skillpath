@@ -16,6 +16,7 @@
           <%= f.label :email, "メールアドレス", class: "label-text" %><br />
           <%= f.email_field :email, id: "user_email", autocomplete: "email", class: "form__text" %>
         </div>
+
         <%if @sns_id.present? %>
           <%= hidden_field_tag :sns_auth, true %>
         <% else %>
@@ -29,6 +30,7 @@
             <%= f.password_field :password_confirmation, id: "user_password_confirmation", autocomplete: "new-password", class: "form__text" %>
           </div>
         <% end %>
+        
         <div class="field">
           <%= f.label :profile, "資格", class: "label-text optional" %><br />
           <%= f.text_area :profile, placeholder: "取得した資格を入力してください", class: "form__text", id: "user_profile" %>
@@ -40,7 +42,7 @@
       <% end %>
 
       <div class="google-auth">
-        <%= button_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "google-auth__btn" %>
+        <%= button_to "Googleで登録", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "google-auth__btn" %>
       </div>
     </div>
   </div>
