@@ -23,6 +23,10 @@
           <%= f.submit "ログイン", class: "form__btn" %>
         </div>
       <% end %>
+
+      <div class="google-auth">
+        <%= button_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "google-auth__btn" %>
+      </div>
     </div>
   </div>
 </div>

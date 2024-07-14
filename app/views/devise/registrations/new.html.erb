@@ -17,16 +17,20 @@
           <%= f.email_field :email, id: "user_email", autocomplete: "email", class: "form__text" %>
         </div>
 
-        <div class="field">
-          <%= f.label :password, "パスワード（6文字以上）", class: "label-text" %><br />
-          <%= f.password_field :password, id: "user_password", autocomplete: "new-password", class: "form__text" %>
-        </div>
+        <%if @sns_id.present? %>
+          <%= hidden_field_tag :sns_auth, true %>
+        <% else %>
+          <div class="field">
+            <%= f.label :password, "パスワード（6文字以上）", class: "label-text" %><br />
+            <%= f.password_field :password, id: "user_password", autocomplete: "new-password", class: "form__text" %>
+          </div>
 
-        <div class="field">
-          <%= f.label :password_confirmation, "パスワード再入力", class: "label-text" %><br />
-          <%= f.password_field :password_confirmation, id: "user_password_confirmation", autocomplete: "new-password", class: "form__text" %>
-        </div>
-
+          <div class="field">
+            <%= f.label :password_confirmation, "パスワード再入力", class: "label-text" %><br />
+            <%= f.password_field :password_confirmation, id: "user_password_confirmation", autocomplete: "new-password", class: "form__text" %>
+          </div>
+        <% end %>
+        
         <div class="field">
           <%= f.label :profile, "資格", class: "label-text optional" %><br />
           <%= f.text_area :profile, placeholder: "取得した資格を入力してください", class: "form__text", id: "user_profile" %>
@@ -36,6 +40,10 @@
           <%= f.submit "新規登録", class: "form__btn" %>
         </div>
       <% end %>
+
+      <div class="google-auth">
+        <%= button_to "Googleで登録", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "google-auth__btn" %>
+      </div>
     </div>
   </div>
 </div>
