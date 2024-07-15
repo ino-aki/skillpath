@@ -80,10 +80,45 @@ a {
   background-color: #f4f4f4;
 }
 
+/* 検索フォーム */
+.search-form {
+  display: flex;
+  align-items: flex-start; /* 上揃えに変更 */
+  gap: 10px;
+  margin: 20px;
+}
+
+.search-form label {
+  font-weight: bold;
+  align-self: center; /* ラベルを中央揃え */
+}
+
+.search-form input[type="search"] {
+  flex: 1; /* 幅を伸ばす */
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.search-form input[type="submit"] {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-form input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
 /* 資格一覧表示 */
 .qualifications {
   width: 100%;
-  padding: 20px 0;
   box-sizing: border-box;
 }
 

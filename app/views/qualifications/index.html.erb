@@ -1,12 +1,11 @@
 <main class="main">
-  <%= search_form_for @q do |f| %>
-    <div class="search-form">
-      <%= f.label :name_cont, "資格名" %>
-      <%= f.search_field :name_cont %>
-      <%= f.submit "検索" %>
-    </div>
-  <% end %>
   <div class="inner">
+    <%= search_form_for @q do |f| %>
+      <div class="search-form">
+        <%= f.search_field :name_cont %>
+        <%= f.submit "検索" %>
+      </div>
+    <% end %>
     <div class="qualifications">
       <div class="qualifications-header">
         <h2>資格情報一覧</h2>
