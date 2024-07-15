@@ -85,3 +85,4 @@ gem 'omniauth', '~>2.1.1'
 gem "pry-rails"
 gem 'ransack'
 gem 'bootstrap', '~> 5.2.3'
+gem 'jquery-rails'
