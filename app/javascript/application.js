@@ -5,5 +5,3 @@
 //= require bootstrap-sprockets
 import "@hotwired/turbo-rails"
 import "controllers"
-import "tabs"
-import "study_plan"

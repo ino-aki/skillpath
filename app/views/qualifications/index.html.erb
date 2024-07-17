@@ -3,7 +3,7 @@
     <%= search_form_for @q, html: { class: "search-form" } do |f| %>
       <div class="row">
         <div class="col-md-8">
-          <%= f.search_field :name_cont, class: "form-control", placeholder: "資格名を入力して検索" %>
+          <%= f.search_field :name_cont, class: "form-control", placeholder: "資格名で検索" %>
         </div>
         <div class="col-md-4">
           <%= f.submit "検索", class: "btn btn-primary btn-block" %>
@@ -11,17 +11,17 @@
       </div>
     <% end %>
 
-    <div class="qualifications mt-4">
-      <div class="qualifications-header">
+    <div class="qualifications">
+      <div class="qualifications-header text-center my-4">
         <h2>資格情報一覧</h2>
       </div>
-      <div class="row qualifications-list">
+      <div class="qualifications-list row row-cols-1 row-cols-md-2 g-4">
         <% @qualifications.each do |qualification| %>
-          <div class="col-md-6 mb-4">
-            <%= link_to qualification_path(qualification), class: "qualification-card" do %>
-              <div class="card">
+          <div class="col">
+            <%= link_to qualification_path(qualification), class: "text-decoration-none text-dark" do %>
+              <div class="card h-100">
                 <div class="card-body">
-                  <h3 class="card-title"><%= qualification.name %></h3>
+                  <h5 class="card-title"><%= qualification.name %></h5>
                   <p class="card-text"><%= qualification.description %></p>
                 </div>
               </div>

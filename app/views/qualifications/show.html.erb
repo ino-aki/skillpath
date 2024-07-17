@@ -1,5 +1,5 @@
 <main class="main">
-  <div class="container">
+  <div class="inner">
     <div class="qualification-detail">
       <div class="qualification-header">
         <h2><%= @qualification.name %></h2>
@@ -8,20 +8,21 @@
       <div class="tabs">
         <button class="tab-button active" data-tab="basic-info">基本情報</button>
         <button class="tab-button" data-tab="extra-info">詳細情報</button>
+        <!-- 学習計画タブを追加 -->
         <button class="tab-button" data-tab="study-plan">学習計画</button>
       </div>
       
       <div class="tab-content active" id="basic-info">
         <div class="qualification-content">
-          <hr class="qualification-divider">
+          <hr class="qualification-divider"> <!-- 仕切り線 -->
           <p class="qualification-label">公式URL:</p>
           <p class="qualification-info"><%= link_to @qualification.official_url, @qualification.official_url, target: '_blank', class: 'link-hover' %></p>
           
-          <hr class="qualification-divider">
+          <hr class="qualification-divider"> <!-- 仕切り線 -->
           <p class="qualification-label">受験情報URL:</p>
           <p class="qualification-info"><%= link_to @qualification.exam_info_url, @qualification.exam_info_url, target: '_blank', class: 'link-hover' %></p>
           
-          <hr class="qualification-divider">
+          <hr class="qualification-divider"> <!-- 仕切り線 -->
           <p class="qualification-label">受験料:</p>
           <p class="qualification-info"><%= @qualification.exam_fee %></p>
         </div>
@@ -29,7 +30,7 @@
       
       <div class="tab-content" id="extra-info">
         <div class="qualification-extra">
-          <hr class="qualification-divider">
+          <hr class="qualification-divider"> <!-- 仕切り線 -->
           <p class="qualification-label">学習目安時間:</p>
           <p class="qualification-info">
             <%= @qualification.study_hours %>時間以上
@@ -38,6 +39,7 @@
         </div>
       </div>
 
+      <!-- 学習計画タブのコンテンツ -->
       <div class="tab-content" id="study-plan">
         <div class="qualification-study-plan">
           <%= form_with(url: calculate_study_time_study_plans_path, method: :post, id: 'study-plan-form') do |form| %>
@@ -73,7 +75,7 @@
               <%= form.label :study_goal_hours, '学習目安時間（時間）', class: 'form-label' %>
               <%= form.number_field :study_goal_hours, class: 'form-control', value: @qualification.study_hours, required: true %>
             </div>
-            <%= form.submit '学習計画を計算する', class: 'btn btn-primary btn-submit' %>
+            <%= form.submit '学習計画を計算する', class: 'btn-submit' %>
           <% end %>
           <div id="study-plan-result"></div>
           <div id="study-plan-feedback"></div>
@@ -83,6 +85,7 @@
         </div>
       </div>
 
+      <!-- コメントセクション -->
       <div class="comments-section">
         <h3>受験者の声・体験談を投稿</h3>
         <% @comments.each do |comment| %>
@@ -90,14 +93,18 @@
             <p><strong><%= link_to comment.user.nickname, user_path(comment.user) %>:</strong> <%= comment.content %></p>
             <p class="timestamp"><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></p>
             <% if comment.user == current_user %>
-              <%= link_to '編集', edit_qualification_comment_path(@qualification, comment), class: 'edit-comment-link' %>
-              <%= link_to "削除", qualification_comment_path(@qualification, comment), data: { turbo_method: :delete }, class: 'delete-comment-link' %>
+              <%= link_to '編集', edit_qualification_comment_path(@qualification, comment) %>
+              <%= link_to "削除", qualification_comment_path(@qualification, comment), data: { turbo_method: :delete }, class: :prototype__btn %>
             <% end %>
           </div>
         <% end %>
 
         <% if user_signed_in? %>
-          <%= render 'comments/form', comment: @comment %>
+          <!-- コメント入力フォーム -->
+          <%= form_with(model: [ @qualification, @comment ], url: qualification_comments_path(@qualification)) do |form| %>
+            <%= form.text_area :content, placeholder: 'コメントを入力してください', required: true %>
+            <%= form.submit 'コメントを投稿する' %>
+          <% end %>
         <% else %>
           <p>コメントをするには<a href="<%= new_user_session_path %>">ログイン</a>してください。</p>
         <% end %>
@@ -107,7 +114,7 @@
         <p>※ 情報が古い場合があるので受験する場合は公式サイトを参照してください。</p>
       </div>
 
-      <%= link_to '一覧に戻る', qualifications_path, class: 'btn btn-secondary back-btn' %>
+      <%= link_to '一覧に戻る', qualifications_path, class: 'back-btn' %>
     </div>
   </div>
 </main>
