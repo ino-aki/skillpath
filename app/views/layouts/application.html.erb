@@ -14,39 +14,43 @@
 </head>
 
 <body>
-  <header class="header">
-    <div class="container">
-      <nav class="navbar navbar-expand-md navbar-light">
-        <%= link_to image_tag("logo.png", class: "navbar-brand logo"), root_path %>
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+<header class="header">
+  <div class="container">
+    <nav class="navbar navbar-expand-md navbar-light">
 
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul class="navbar-nav">
-            <% if user_signed_in? %>
-              <li class="nav-item">
-                <%= link_to "#{current_user.nickname}さん", "/users/#{current_user.id}", class: "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </nav>
+      <%= link_to image_tag("logo.png", class: "navbar-brand logo"), root_path %>
+
+      <!-- メニュー項目 -->
+      <div class="collapse navbar-collapse show" id="navbarNav">
+        <ul class="navbar-nav ms-auto flex-row pe-3"> <!-- pe-3を追加 -->
+          <% if user_signed_in? %>
+            <li class="nav-item me-3"> <!-- me-3を追加 -->
+              <%= link_to "#{current_user.nickname}さん", "/users/#{current_user.id}", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item me-3"> <!-- me-3を追加 -->
+              <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+
+  <main class="main">
+    <div class="container">
+      <%= yield %>
     </div>
-  </header>
-  <%= yield %>
+  </main>
   <footer class="footer mt-5">
     <div class="container">
       <div class="inner text-center">

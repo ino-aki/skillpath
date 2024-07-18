@@ -1,49 +1,44 @@
-<div class="main">
-  <div class="inner">
-    <div class="form__wrapper">
-      <h2 class="page-heading">ユーザー新規登録</h2>
+<div class="form__wrapper">
+  <h2 class="page-heading">ユーザー新規登録</h2>
 
-      <%= render 'shared/error_messages', object: @user %>
+  <%= render 'shared/error_messages', object: @user %>
 
-      <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
-
-        <div class="field">
-          <%= f.label :nickname, "ニックネーム", class: "label-text" %><br />
-          <%= f.text_field :nickname, id: "user_name", autofocus: true, class: "form__text" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :email, "メールアドレス", class: "label-text" %><br />
-          <%= f.email_field :email, id: "user_email", autocomplete: "email", class: "form__text" %>
-        </div>
-
-        <%if @sns_id.present? %>
-          <%= hidden_field_tag :sns_auth, true %>
-        <% else %>
-          <div class="field">
-            <%= f.label :password, "パスワード（6文字以上）", class: "label-text" %><br />
-            <%= f.password_field :password, id: "user_password", autocomplete: "new-password", class: "form__text" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :password_confirmation, "パスワード再入力", class: "label-text" %><br />
-            <%= f.password_field :password_confirmation, id: "user_password_confirmation", autocomplete: "new-password", class: "form__text" %>
-          </div>
-        <% end %>
-        
-        <div class="field">
-          <%= f.label :profile, "資格", class: "label-text optional" %><br />
-          <%= f.text_area :profile, placeholder: "取得した資格を入力してください", class: "form__text", id: "user_profile" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "新規登録", class: "form__btn" %>
-        </div>
-      <% end %>
-
-      <div class="google-auth">
-        <%= button_to "Googleで登録", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "google-auth__btn" %>
-      </div>
+  <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+    <div class="mb-3">
+      <%= f.label :nickname, "ニックネーム", class: "form-label" %>
+      <%= f.text_field :nickname, id: "user_name", autofocus: true, class: "form-control", required: true %>
     </div>
+
+    <div class="mb-3">
+      <%= f.label :email, "メールアドレス", class: "form-label" %>
+      <%= f.email_field :email, id: "user_email", autocomplete: "email", class: "form-control", required: true %>
+    </div>
+
+    <% if @sns_id.present? %>
+      <%= hidden_field_tag :sns_auth, true %>
+    <% else %>
+      <div class="mb-3">
+        <%= f.label :password, "パスワード", class: "form-label" %>
+        <%= f.password_field :password, id: "user_password", autocomplete: "new-password", class: "form-control", required: true %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :password_confirmation, "パスワード再入力", class: "form-label" %>
+        <%= f.password_field :password_confirmation, id: "user_password_confirmation", autocomplete: "new-password", class: "form-control", required: true %>
+      </div>
+    <% end %>
+    
+    <div class="mb-3">
+      <%= f.label :profile, "資格（任意）", class: "form-label optional" %>
+      <%= f.text_area :profile, placeholder: "取得した資格を入力してください", class: "form-control", id: "user_profile" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.submit "新規登録", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <div class="google-auth">
+    <%= button_to "Googleで登録", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "btn btn-outline-danger" %>
   </div>
 </div>

@@ -1,69 +1,128 @@
-<main class="main">
-  <div class="inner">
-    <div class="qualification-detail">
-      <div class="qualification-header">
-        <h2><%= @qualification.name %></h2>
-      </div>
-      
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="basic-info-tab" data-bs-toggle="tab" data-bs-target="#basic-info" type="button" role="tab" aria-controls="basic-info" aria-selected="true">基本情報</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="extra-info-tab" data-bs-toggle="tab" data-bs-target="#extra-info" type="button" role="tab" aria-controls="extra-info" aria-selected="false">詳細情報</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="study-plan-tab" data-bs-toggle="tab" data-bs-target="#study-plan" type="button" role="tab" aria-controls="study-plan" aria-selected="false">学習計画</button>
-        </li>
-      </ul>
-      
-      <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="basic-info-tab">
-          <div class="qualification-content">
-            <hr class="qualification-divider"> <!-- 仕切り線 -->
-            <p class="qualification-label">公式URL:</p>
-            <p class="qualification-info"><%= link_to @qualification.official_url, @qualification.official_url, target: '_blank', class: 'link-hover' %></p>
-            
-            <hr class="qualification-divider"> <!-- 仕切り線 -->
-            <p class="qualification-label">受験情報URL:</p>
-            <p class="qualification-info"><%= link_to @qualification.exam_info_url, @qualification.exam_info_url, target: '_blank', class: 'link-hover' %></p>
-            
-            <hr class="qualification-divider"> <!-- 仕切り線 -->
-            <p class="qualification-label">受験料:</p>
-            <p class="qualification-info"><%= @qualification.exam_fee %></p>
-          </div>
-        </div>
+<div class="qualification-detail">
+  <div class="qualification-header text-center">
+    <h2><%= @qualification.name %></h2>
+  </div>
+  
+  <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="basic-info-tab" data-bs-toggle="tab" data-bs-target="#basic-info" type="button" role="tab" aria-controls="basic-info" aria-selected="true">基本情報</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="extra-info-tab" data-bs-toggle="tab" data-bs-target="#extra-info" type="button" role="tab" aria-controls="extra-info" aria-selected="false">詳細情報</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="study-plan-tab" data-bs-toggle="tab" data-bs-target="#study-plan" type="button" role="tab" aria-controls="study-plan" aria-selected="false">学習計画</button>
+    </li>
+  </ul>
+  
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="basic-info-tab">
+      <div class="qualification-content">
+        <hr class="qualification-divider"> <!-- 仕切り線 -->
+        <p class="qualification-label">公式URL:</p>
+        <p class="qualification-info"><%= link_to @qualification.official_url, @qualification.official_url, target: '_blank', class: 'link-hover' %></p>
         
-        <div class="tab-pane fade" id="extra-info" role="tabpanel" aria-labelledby="extra-info-tab">
-          <div class="qualification-extra">
-            <hr class="qualification-divider"> <!-- 仕切り線 -->
-            <p class="qualification-label">学習目安時間:</p>
-            <p class="qualification-info">
-              <%= @qualification.study_hours %>時間以上
-              (<%= link_to '情報元', @qualification.source_url, target: '_blank', class: 'link-hover' %>)
-            </p>
+        <hr class="qualification-divider"> <!-- 仕切り線 -->
+        <p class="qualification-label">受験情報URL:</p>
+        <p class="qualification-info"><%= link_to @qualification.exam_info_url, @qualification.exam_info_url, target: '_blank', class: 'link-hover' %></p>
+        
+        <hr class="qualification-divider"> <!-- 仕切り線 -->
+        <p class="qualification-label">受験料:</p>
+        <p class="qualification-info"><%= @qualification.exam_fee %></p>
+      </div>
+    </div>
+    
+    <div class="tab-pane fade" id="extra-info" role="tabpanel" aria-labelledby="extra-info-tab">
+      <div class="qualification-extra">
+        <hr class="qualification-divider"> <!-- 仕切り線 -->
+        <p class="qualification-label">学習目安時間:</p>
+        <p class="qualification-info">
+          <%= @qualification.study_hours %>時間以上
+          (<%= link_to '情報元', @qualification.source_url, target: '_blank', class: 'link-hover' %>)
+        </p>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="study-plan" role="tabpanel" aria-labelledby="study-plan-tab">
+      <div class="qualification-study-plan">
+        <%= form_with(url: calculate_study_time_study_plans_path, method: :post, id: 'study-plan-form') do |form| %>
+          <div class="form-group">
+            <%= form.label :start_date, '開始日 ', class: 'form-label' %>
+            <%= form.text_field :start_date, class: 'form-control', value: Date.today.strftime('%Y%m%d'), required: true %>
           </div>
-        </div>
-
-        <div class="tab-pane fade" id="study-plan" role="tabpanel" aria-labelledby="study-plan-tab">
-          <div class="qualification-study-plan">
-            <%= form_with(url: calculate_study_time_study_plans_path, method: :post, id: 'study-plan-form') do |form| %>
-              <!-- 学習計画フォームの内容 -->
-            <% end %>
+          <div class="form-group">
+            <%= form.label :test_date, '試験日 ', class: 'form-label' %>
+            <%= form.text_field :test_date, class: 'form-control', value: (Date.today + 3.months).strftime('%Y%m%d'), required: true %>
           </div>
-        </div>
+          <div class="form-group">
+            <%= form.label :holiday_days, '祝日有給日数 ', class: 'form-label' %>
+            <%= form.number_field :holiday_days, class: 'form-control', value: 0, required: true %>
+          </div>
+          <div class="form-group">
+            <%= form.label :study_hours_weekday, '平日の1日あたり勉強時間（時間）', class: 'form-label' %>
+            <%= form.number_field :study_hours_weekday, class: 'form-control', value: 2, required: true %>
+          </div>
+          <div class="form-group">
+            <%= form.label :study_hours_saturday, '土曜日の1日あたり勉強時間（時間）', class: 'form-label' %>
+            <%= form.number_field :study_hours_saturday, class: 'form-control', value: 0, required: true %>
+          </div>
+          <div class="form-group">
+            <%= form.label :study_hours_sunday, '日曜日の1日あたり勉強時間（時間）', class: 'form-label' %>
+            <%= form.number_field :study_hours_sunday, class: 'form-control', value: 0, required: true %>
+          </div>
+          <div class="form-group">
+            <%= form.label :study_hours_holiday, '祝日有給日の1日あたり勉強時間（時間）', class: 'form-label' %>
+            <%= form.number_field :study_hours_holiday, class: 'form-control', value: 0, required: true %>
+          </div>
+          <div class="form-group">
+            <%= form.label :study_goal_hours, '学習目安時間（時間）', class: 'form-label' %>
+            <%= form.number_field :study_goal_hours, class: 'form-control', value: @qualification.study_hours, required: true %>
+          </div>
+          <%= form.submit '学習計画を計算する', class: 'btn btn-submit' %>
+        <% end %>
+        <div id="study-plan-result"></div>
+        <div id="study-plan-feedback"></div>
+        <p class="study-plan-disclaimer">
+          <br>※ こちらの計算結果は目安の学習時間を算出するものであり、実際の受験準備においては個別の状況に応じた適切な計画調整が必要です。ご注意ください。
+        </p>
       </div>
-
-      <!-- コメントセクション -->
-      <div class="comments-section">
-        <!-- コメント表示と入力フォーム -->
-      </div>
-
-      <div class="disclaimer">
-        <p>※ 情報が古い場合があるので受験する場合は公式サイトを参照してください。</p>
-      </div>
-
-      <%= link_to '一覧に戻る', qualifications_path, class: 'back-btn' %>
     </div>
   </div>
-</main>
+
+  <!-- コメントセクション -->
+  <div class="comments-section">
+    <h3 class="text-center">受験者の声・体験談を投稿</h3>
+
+    <!-- コメント一覧 -->
+    <% @comments.each do |comment| %>
+      <div class="comment mb-3">
+        <p><strong><%= link_to comment.user.nickname, user_path(comment.user) %>:</strong> <%= comment.content %></p>
+        <p class="timestamp text-muted"><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+        <% if comment.user == current_user %>
+          <%= link_to '編集', edit_qualification_comment_path(@qualification, comment), class: "btn btn-sm btn-outline-secondary me-1" %>
+          <%= link_to "削除", qualification_comment_path(@qualification, comment), data: { turbo_method: :delete, confirm: '本当に削除しますか？' }, method: :delete, class: "btn btn-sm btn-outline-danger" %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <!-- ログインしている場合のみコメント入力フォームを表示 -->
+    <% if user_signed_in? %>
+      <%= form_with(model: [ @qualification, @comment ], url: qualification_comments_path(@qualification), class: "mt-4") do |form| %>
+        <div class="mb-3">
+          <%= form.text_area :content, placeholder: 'コメントを入力してください', required: true, class: "form-control" %>
+        </div>
+        <%= form.submit 'コメントを投稿する', class: "btn btn-primary" %>
+      <% end %>
+    <% else %>
+      <p class="mt-4 text-center">コメントをするには<a href="<%= new_user_session_path %>">ログイン</a>してください。</p>
+    <% end %>
+  </div>
+
+  <div class="disclaimer text-center">
+    <p>※ 情報が古い場合があるので受験する場合は公式サイトを参照してください。</p>
+  </div>
+
+  <div class="text-center">
+    <%= link_to '一覧に戻る', qualifications_path, class: 'btn btn-secondary mt-4' %>
+  </div>
+</div>
