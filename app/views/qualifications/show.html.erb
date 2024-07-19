@@ -78,7 +78,7 @@
             <%= form.label :study_goal_hours, '学習目安時間（時間）', class: 'form-label' %>
             <%= form.number_field :study_goal_hours, class: 'form-control', value: @qualification.study_hours, required: true %>
           </div>
-          <%= form.submit '学習計画を計算する', class: 'btn btn-submit' %>
+          <%= form.submit '学習計画を計算する', class: 'btn btn-primary' %>
         <% end %>
         <div id="study-plan-result"></div>
         <div id="study-plan-feedback"></div>
@@ -90,6 +90,7 @@
   </div>
 
   <!-- コメントセクション -->
+  <hr class="qualification-divider"> <!-- 仕切り線 -->
   <div class="comments-section">
     <h3 class="text-center">受験者の声・体験談を投稿</h3>
 
