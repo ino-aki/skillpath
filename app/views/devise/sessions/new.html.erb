@@ -1,31 +1,27 @@
-<div class="main">
-  <div class="inner">
-    <div class="form__wrapper">
-      <h2 class="page-heading">ユーザーログイン</h2>
+<div class="form__wrapper">
+  <h2 class="page-heading">ユーザーログイン</h2>
 
-      <div class='login-flash-message <%= 'show' if flash[:alert] %>'>
-        <%= flash[:alert] %>
-      </div>
+  <div class='login-flash-message <%= 'show' if flash[:alert] %>'>
+    <%= flash[:alert] %>
+  </div>
 
-      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
-        <div class="mb-3">
-          <%= f.label :email, "メールアドレス", class: "form-label" %>
-          <%= f.email_field :email, id: "user_email", autofocus: true, autocomplete: "email", class: "form-control" %>
-        </div>
-
-        <div class="mb-3">
-          <%= f.label :password, "パスワード（6文字以上）", class: "form-label" %>
-          <%= f.password_field :password, id: "user_password", autocomplete: "current-password", class: "form-control" %>
-        </div>
-
-        <div class="mb-3">
-          <%= f.submit "ログイン", class: "btn btn-primary" %>
-        </div>
-      <% end %>
-
-      <div class="google-auth">
-        <%= button_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "btn btn-outline-danger" %>
-      </div>
+  <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+    <div class="mb-3">
+      <%= f.label :email, "メールアドレス", class: "form-label" %>
+      <%= f.email_field :email, id: "user_email", autofocus: true, autocomplete: "email", class: "form-control" %>
     </div>
+
+    <div class="mb-3">
+      <%= f.label :password, "パスワード（6文字以上）", class: "form-label" %>
+      <%= f.password_field :password, id: "user_password", autocomplete: "current-password", class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.submit "ログイン", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <div class="google-auth">
+    <%= button_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "btn btn-outline-danger" %>
   </div>
 </div>

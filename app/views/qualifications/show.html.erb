@@ -1,4 +1,4 @@
-<div class="qualification-detail">
+<div class="qualification-detail h-100">
   <div class="qualification-header text-center">
     <h2><%= @qualification.name %></h2>
   </div>
@@ -15,7 +15,7 @@
     </li>
   </ul>
   
-  <div class="tab-content" id="myTabContent">
+  <div class="tab-content h-80" id="myTabContent">
     <div class="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="basic-info-tab">
       <div class="qualification-content">
         <hr class="qualification-divider"> <!-- 仕切り線 -->
@@ -78,12 +78,12 @@
             <%= form.label :study_goal_hours, '学習目安時間（時間）', class: 'form-label' %>
             <%= form.number_field :study_goal_hours, class: 'form-control', value: @qualification.study_hours, required: true %>
           </div>
-          <%= form.submit '学習計画を計算する', class: 'btn btn-primary' %>
+          <%= form.submit '学習計画を計算する', class: 'btn btn-primary mt-2 mb-2' %>
         <% end %>
-        <div id="study-plan-result"></div>
-        <div id="study-plan-feedback"></div>
-        <p class="study-plan-disclaimer">
-          <br>※ こちらの計算結果は目安の学習時間を算出するものであり、実際の受験準備においては個別の状況に応じた適切な計画調整が必要です。ご注意ください。
+        <div id="study-plan-result" class="fw-bold"></div>
+        <div id="study-plan-feedback" class="fw-bold"></div>
+        <p class="study-plan-disclaimer mt-2">
+          ※ こちらの計算結果は目安の学習時間を算出するものであり、実際の受験準備においては個別の状況に応じた適切な計画調整が必要です。ご注意ください。
         </p>
       </div>
     </div>

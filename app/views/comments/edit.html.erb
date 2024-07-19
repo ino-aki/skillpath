@@ -1,19 +1,17 @@
-<div class="main">
-  <div class="inner">
-    <div class="profile__wrapper">
-      <h2 class="page-heading">コメントを編集する</h2>
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h2 class="card-title mb-4">コメントを編集する</h2>
 
       <%= form_with(model: [ @qualification, @comment ], url: qualification_comment_path(@qualification, @comment), method: :patch, class: 'comment-form') do |form| %>
-        <div class="comment-form__field">
-          <%= form.label :content, class: 'comment-form__label' do %>
-            コメント内容
-          <% end %>
-          <%= form.text_area :content, required: true, class: 'comment-form__textarea' %>
+        <div class="mb-3">
+          <%= form.label :content, class: 'form-label' %>
+          <%= form.text_area :content, required: true, class: 'form-control' %>
         </div>
 
-        <div class="comment-form__actions">
-          <%= form.submit '更新する', class: 'comment-form__submit' %>
-          <%= link_to '戻る', qualification_path(@qualification), class: 'comment-form__submit comment-form__back-link' %>
+        <div class="d-flex">
+          <%= form.submit '更新する', class: 'btn btn-primary me-2' %>
+          <%= link_to '戻る', qualification_path(@qualification), class: 'btn btn-secondary' %>
         </div>
       <% end %>
     </div>
