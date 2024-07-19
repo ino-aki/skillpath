@@ -14,28 +14,48 @@
 </head>
 
 <body>
-  <header class="header">
-    <div class="inner">
-      <div class="nav">
-        <div class="nav__left">
-          <%= link_to image_tag("logo.png", class: "logo"), root_path %>
-        </div>
-        <div class="nav__right">
+<header class="header">
+  <div class="container">
+    <nav class="navbar navbar-expand-md navbar-light">
+
+      <%= link_to image_tag("logo.png", class: "navbar-brand logo"), root_path %>
+
+      <!-- メニュー項目 -->
+      <div class="collapse navbar-collapse show" id="navbarNav">
+        <ul class="navbar-nav ms-auto flex-row pe-3"> <!-- pe-3を追加 -->
           <% if user_signed_in? %>
-            <%= link_to "#{current_user.nickname}さん", "/users/#{current_user.id}", class: "nav__btn" %>
-            <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav__btn" %>
+            <li class="nav-item me-3"> <!-- me-3を追加 -->
+              <%= link_to "#{current_user.nickname}さん", "/users/#{current_user.id}", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
+            </li>
           <% else %>
-            <%= link_to "ログイン", new_user_session_path, class: "nav__btn" %>
-            <%= link_to "新規登録", new_user_registration_path, class: "nav__btn" %>
+            <li class="nav-item me-3"> <!-- me-3を追加 -->
+              <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
+            </li>
           <% end %>
-        </div>
+        </ul>
       </div>
+    </nav>
+  </div>
+</header>
+
+
+
+  <main class="main">
+    <div class="container">
+      <%= yield %>
     </div>
-  </header>
-    <%= yield %>
-  <footer class="footer">
-    <div class="inner">
-      <p class="copyright">Copyright © Skill Path All rights reserved.</p>
+  </main>
+  <footer class="footer mt-5">
+    <div class="container">
+      <div class="inner text-center">
+        <p class="copyright">Copyright © Skill Path All rights reserved.</p>
+      </div>
     </div>
   </footer>
 </body>
