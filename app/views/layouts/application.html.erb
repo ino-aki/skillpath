@@ -43,11 +43,14 @@
     </nav>
   </div>
 </header>
-
-
-
   <main class="main">
     <div class="container">
+      <!-- パンくずリストの表示 -->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <%= breadcrumbs separator: " &rsaquo; " %>
+        </ol>
+      </nav>
       <%= yield %>
     </div>
   </main>

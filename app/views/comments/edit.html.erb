@@ -1,16 +1,18 @@
+<% breadcrumb :edit_comment, @qualification, @comment %>
+
 <div class="container mt-4">
   <div class="card shadow-sm">
     <div class="card-body">
-      <h2 class="card-title mb-4">コメントを編集する</h2>
+      <h2 class="card-title mb-4">コメント編集</h2>
 
       <%= form_with(model: [ @qualification, @comment ], url: qualification_comment_path(@qualification, @comment), method: :patch, class: 'comment-form') do |form| %>
         <div class="mb-3">
-          <%= form.label :content, class: 'form-label' %>
+          <%= form.label :content, 'コメント内容', class: 'form-label' %>
           <%= form.text_area :content, required: true, class: 'form-control' %>
         </div>
 
         <div class="d-flex">
-          <%= form.submit '更新する', class: 'btn btn-primary me-2' %>
+          <%= form.submit '更新', class: 'btn btn-primary me-2' %>
           <%= link_to '戻る', qualification_path(@qualification), class: 'btn btn-secondary' %>
         </div>
       <% end %>

@@ -86,3 +86,4 @@ gem "pry-rails"
 gem 'ransack'
 gem 'bootstrap', '~> 5.2.3'
 gem 'jquery-rails'
+gem "gretel"

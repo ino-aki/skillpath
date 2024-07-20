@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_action :authorize_user, only: [:edit, :update]
 
   def show
+    @qualification = params[:qualification_id] ? qualification.find_by(id: params[:qualification_id]) : nil
+    @comment = params[:comment_id] ? comment.find_by(id: params[:comment_id]) : nil
   end
 
   def edit
