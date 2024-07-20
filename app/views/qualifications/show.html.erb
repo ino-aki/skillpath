@@ -1,3 +1,5 @@
+<% breadcrumb :qualification, @qualification %>
+
 <div class="qualification-detail h-100">
   <div class="qualification-header text-center">
     <h2><%= @qualification.name %></h2>
@@ -47,15 +49,15 @@
       <div class="qualification-study-plan">
         <%= form_with(url: calculate_study_time_study_plans_path, method: :post, id: 'study-plan-form') do |form| %>
           <div class="form-group">
-            <%= form.label :start_date, '開始日 ', class: 'form-label' %>
+            <%= form.label :start_date, '開始日', class: 'form-label' %>
             <%= form.text_field :start_date, class: 'form-control', value: Date.today.strftime('%Y%m%d'), required: true %>
           </div>
           <div class="form-group">
-            <%= form.label :test_date, '試験日 ', class: 'form-label' %>
+            <%= form.label :test_date, '試験日', class: 'form-label' %>
             <%= form.text_field :test_date, class: 'form-control', value: (Date.today + 3.months).strftime('%Y%m%d'), required: true %>
           </div>
           <div class="form-group">
-            <%= form.label :holiday_days, '祝日有給日数 ', class: 'form-label' %>
+            <%= form.label :holiday_days, '祝日有給日数 (この日数分、平日の勉強時間を祝日有給に振り替えます)', class: 'form-label' %>
             <%= form.number_field :holiday_days, class: 'form-control', value: 0, required: true %>
           </div>
           <div class="form-group">

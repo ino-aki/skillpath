@@ -10,12 +10,14 @@ class StudyPlansController < ApplicationController
     study_hours_holiday = params[:study_hours_holiday].to_i
     study_goal_hours = params[:study_goal_hours].to_i
 
-    # 平日、週末、祝日有給日の勉強時間を計算
+    # 総勉強時間を計算
     total_study_hours = 0
+    total_weekdays = 0 # 平日の日数をカウント
     current_date = start_date
 
     while current_date < test_date
       if current_date.wday.between?(1, 5) # 月曜日から金曜日
+        total_weekdays += 1
         total_study_hours += study_hours_weekday
       elsif current_date.wday == 6 # 土曜日
         total_study_hours += study_hours_saturday
@@ -26,8 +28,13 @@ class StudyPlansController < ApplicationController
       current_date += 1
     end
 
-    # 祝日有給日の勉強時間を加算
-    total_study_hours += holiday_days * study_hours_holiday
+    # 祝日有給日数に基づく調整
+    if holiday_days > 0
+      # 祝日有給日数を平日から減少させ、祝日有給日の勉強時間を追加
+      weekdays_to_deduct = [total_weekdays, holiday_days].min
+      total_study_hours -= weekdays_to_deduct * study_hours_weekday
+      total_study_hours += holiday_days * study_hours_holiday
+    end
 
     # 目標時間との比較を行う
     hours_difference = study_goal_hours - total_study_hours
