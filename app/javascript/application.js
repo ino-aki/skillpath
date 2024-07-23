@@ -5,5 +5,6 @@
 //= require bootstrap-sprockets
 import "@hotwired/turbo-rails"
 import "controllers"
-import 'study_plan';
+import 'study_plan'
+import 'real_time_search'
 
