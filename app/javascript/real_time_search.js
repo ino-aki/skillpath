@@ -1,16 +1,21 @@
-// app/javascript/packs/application.js
+document.addEventListener("turbo:load", () => {
+  const searchField = document.getElementById("q_name_cont");
 
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.querySelector('.search-form');
+  if (searchField) {
+    let timeout;
 
-  if (form) {
-    form.addEventListener('ajax:success', (event) => {
-      const [data, _status, _xhr] = event.detail;
-      document.getElementById('results').innerHTML = data;
-    });
+    searchField.addEventListener("input", () => {
+      clearTimeout(timeout);
 
-    form.addEventListener('ajax:error', (event) => {
-      console.error('Search request failed:', event.detail);
+      timeout = setTimeout(() => {
+        console.log("Input detected");
+        const form = searchField.closest("form");
+
+        if (form) {
+          console.log("Form found, submitting");
+          form.requestSubmit(); // ここでフォームを送信します
+        }
+      }, 300); // デバウンスのための遅延を追加（例: 300ミリ秒）
     });
   }
 });

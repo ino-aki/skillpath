@@ -6,5 +6,5 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import 'study_plan'
-import 'real_time_search'
+import "real_time_search"
 

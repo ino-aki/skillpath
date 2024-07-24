@@ -4,8 +4,8 @@ class QualificationsController < ApplicationController
     @qualifications = @q.result(distinct: true)
 
     respond_to do |format|
-      format.html # 通常のリクエスト
-      format.js   # Ajax リクエスト
+      format.html # HTMLリクエストの場合
+      format.turbo_stream # Turbo Streamリクエストの場合
     end
   end
   
