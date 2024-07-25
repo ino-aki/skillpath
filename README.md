@@ -87,7 +87,7 @@ https://skillpath-am1o.onrender.com
 ## その他、実装済みの機能
 - タブ機能
 - Googleを利用したSNSログイン機能
-- 検索機能
+- リアルタイム検索機能
 - Bootstrapのレスポンシブデザイン機能
 - パンくずリスト機能
 
