@@ -1,8 +1,12 @@
 class QualificationsController < ApplicationController
   def index
-    @qualifications = Qualification.all
     @q = Qualification.ransack(params[:q])
     @qualifications = @q.result(distinct: true)
+
+    respond_to do |format|
+      format.html # HTMLリクエストの場合
+      format.json { render json: @qualifications } # JSONリクエストの場合
+    end
   end
   
   def show

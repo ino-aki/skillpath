@@ -1,21 +1,18 @@
-<%= search_form_for @q, html: { class: "search-form" } do |f| %>
+<%= search_form_for @q, remote: true, html: { class: "search-form" } do |f| %>
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <form action="">
-        <div class="input-group">
-          <input class="form-control" placeholder="資格名で検索" type="search" name="q[name_cont]" id="q_name_cont">
-          <button type="submit" name="commit" class="btn btn-primary ms-2">検索</button>
-        </div>
-      </form>
+      <div class="input-group">
+        <%= f.search_field :name_cont, placeholder: "資格名で検索", class: "form-control", id: "q_name_cont" %>
+      </div>
     </div>
   </div>
 <% end %>
 
-<div class="qualifications">
+<div id="results">
   <div class="qualifications-header text-center my-4">
-    <h2>資格試験一覧</h2>
+  <h2>資格試験一覧</h2>
   </div>
-  <div class="qualifications-list row row-cols-1 row-cols-md-2 g-4">
+  <div id="qualifications_list" class="qualifications-list row row-cols-1 row-cols-md-2 g-4">
     <% @qualifications.each do |qualification| %>
       <div class="col">
         <%= link_to qualification_path(qualification), class: "text-decoration-none text-dark" do %>
