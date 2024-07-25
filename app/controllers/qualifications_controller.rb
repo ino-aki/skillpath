@@ -5,7 +5,7 @@ class QualificationsController < ApplicationController
 
     respond_to do |format|
       format.html # HTMLリクエストの場合
-      format.turbo_stream # Turbo Streamリクエストの場合
+      format.json { render json: @qualifications } # JSONリクエストの場合
     end
   end
   

@@ -1,15 +1,29 @@
-<!-- app/views/qualifications/index.html.erb -->
 <%= search_form_for @q, remote: true, html: { class: "search-form" } do |f| %>
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="input-group">
         <%= f.search_field :name_cont, placeholder: "資格名で検索", class: "form-control", id: "q_name_cont" %>
-        <%= f.submit '検索', class: "btn btn-primary ms-2" %>
       </div>
     </div>
   </div>
 <% end %>
 
 <div id="results">
-  <%= render partial: 'qualifications_list', locals: { qualifications: @qualifications } %>
+  <div class="qualifications-header text-center my-4">
+  <h2>資格試験一覧</h2>
+  </div>
+  <div id="qualifications_list" class="qualifications-list row row-cols-1 row-cols-md-2 g-4">
+    <% @qualifications.each do |qualification| %>
+      <div class="col">
+        <%= link_to qualification_path(qualification), class: "text-decoration-none text-dark" do %>
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title"><%= qualification.name %></h5>
+              <p class="card-text"><%= qualification.description %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
